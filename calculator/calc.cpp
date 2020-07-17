@@ -146,12 +146,12 @@ int main() {
   //stack->push(4.0);
   if(stack->countVector()==1){
     cout<<"= "<<stack->pop()<<endl; 
-  }
+  }else
   
   //cout<<"= "<<stack->pop()<<endl; 
   if(stack->countVector()>=2){
     cout<<"Too many operands"<<endl; 
-  }
+  }else
   if(stack->countVector()==0){
     cout<<"No expression"<<endl; 
   }
