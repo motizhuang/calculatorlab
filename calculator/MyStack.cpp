@@ -3,6 +3,7 @@
 using namespace std; 
 
 // TODO: Implement MyStack member functions here.
+//calc suffers if there are errors here 
 
 MyStack::~MyStack(){
     delete data; 
@@ -42,6 +43,7 @@ MyStack::~MyStack(){
               newdata[i]=data[i]; 
           }
           newdata[count]=item; 
+          delete data; 
           data = newdata; 
       }
       else{
@@ -51,7 +53,7 @@ MyStack::~MyStack(){
       count++; 
   }
   double MyStack::pop(){
-      if(data==nullptr){
+      if(data==nullptr||count==0){
           throw std::out_of_range("Invalid index.");
       }
       double result = data[count-1];
