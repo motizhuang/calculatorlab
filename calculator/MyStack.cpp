@@ -26,7 +26,8 @@ MyStack::~MyStack(){
   }
   void   MyStack::clear(){
       for(int i =0; i<count; i++)
-      data[i]=0; 
+      //data[i]=0;
+      count --;  
   }
   bool   MyStack::is_empty() const{
       return count ==0;
