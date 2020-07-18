@@ -14,15 +14,23 @@ int main() {
   // TODO: Replace this with something useful!
   //std::cout << "This program doesn't do anything yet...\n";
   stack->push(1); 
-  stack->pop();
-  stack->pop();
-  stack->push(1); 
-  stack->push(1); 
-  stack->push(1); 
-  stack->push(1); 
-  stack->push(1);
-  stack->pop();
-  cout<<stack->top()<<endl; 
+  cout<<stack->countVector()<<endl;
+  stack->push(2);
+  stack->push(3);
+  stack->push(3);
+  stack->push(3);
+  stack->push(3);
+  //cout<<stack->countVector()<<endl;
+  stack->push(3);
+  stack->push(3);
+  stack->push(3);
+  stack->push(3);
+  stack->push(3);
+  cout<<stack->countVector()<<endl;
+  stack->clear();
+  cout<<stack->countVector()<<endl;
+  if(stack->is_empty())
+  cout<<"correct"<<endl; 
   delete stack;
   return 0;
 }
