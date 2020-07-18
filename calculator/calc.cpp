@@ -27,6 +27,7 @@ int main() {
     cout<<"No expression"<<endl; 
   }*/
   string getline; 
+  //string garbage; 
   stringstream str_strm(tokens);
   //double result;
   while(str_strm>>getline){
@@ -49,7 +50,7 @@ int main() {
           stack->push(-1*(stack->pop()));
         } 
         catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
 
       }
       }
@@ -64,7 +65,7 @@ int main() {
             stack->push(pow(stack->pop(),right));
           }
           catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
         }
       }
       }
@@ -79,7 +80,7 @@ int main() {
             
           } 
           catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
         }
       }
       }
@@ -94,7 +95,7 @@ int main() {
             
           } 
           catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
         }
       } 
       }
@@ -110,7 +111,7 @@ int main() {
             
           } 
           catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
         }
       }
       }
@@ -128,7 +129,7 @@ int main() {
             //result = stack->pop(); 
           }
           catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
     //stack->push(check);
     //break; 
   }
@@ -149,7 +150,7 @@ int main() {
             //result = stack->top(); 
           }
           catch(const std::underflow_error&) {
-    std::cout << "Not enough operands\n";
+    std::cout << "Not enough operands.\n";
             
           } 
         }
@@ -166,8 +167,8 @@ int main() {
       if(garbage == "") 
       stack->push(stod(getline));
       else{
-        cout<<"Unknown Token"<<endl;
-        break; 
+        cout<<"Unknown Token."<<endl;
+        //break; 
       }
       //stack->push(stod(getline));
     }
@@ -179,22 +180,24 @@ int main() {
   /*if(stack->countVector()==1){
     cout<<"= "<<stack->pop()<<endl; 
   }else*/
-  
+    /*if(garbage!=""){
+      cout<<"Unknown Token"<<endl;
+    }*/
     if(stack->countVector()==1){
     cout<<"= "<<stack->pop()<<endl; 
   }else
   //cout<<"= "<<stack->pop()<<endl; 
   if(stack->countVector()>=2){
-    cout<<"Too many operands"<<endl; 
+    cout<<"Too many operands."<<endl; 
     while(stack->countVector()>0){
       stack->pop(); 
     }
   }else
   if(tokens==""){
-    cout<<"No expression"<<endl; 
+    cout<<"No expression."<<endl; 
   }
   //cout<<tokens<<endl;
-}
+  }
   //cout<<stack->contents()[0]<<endl;
   //cout<<stack->contents()[1]<<endl;
   //cout<<3<<endl;
