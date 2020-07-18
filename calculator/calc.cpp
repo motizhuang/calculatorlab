@@ -28,6 +28,7 @@ int main() {
   }*/
   string getline; 
   stringstream str_strm(tokens);
+  //double result;
   while(str_strm>>getline){
     //int z = getline.length();
     /*std::stringstream ts(getline);
@@ -41,12 +42,16 @@ int main() {
       if(getline[i]!='0'||getline[i]!='1'||getline[i]!='2'||getline[i]!=3||getline[i]!=4||getline[i]!=5||getline[i]!=6||getline[i]!=7||getline[i]!=8||getline[i]!=9||getline!="~"||getline!="*"||getline!="/"||getline!="+"||getline!="-"||getline!="^"||getline!="%")
       cout<<"Unknown Token"<<endl; 
     }*/
+     
     if(getline=="~"||getline=="*"||getline=="/"||getline=="+"||getline=="-"||getline=="^"||getline=="%"){
       if(getline=="~"){
-        if(!stack->is_empty()){
+        try{
           stack->push(-1*(stack->pop()));
         } 
+        catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
 
+      }
       }
       //int i = getline.length();
       //cout<<i<<endl;
@@ -54,50 +59,60 @@ int main() {
         if(!stack->is_empty()){//true will go through, else will skip to next 
           double right = stack->pop(); 
 
-          if(!stack->is_empty()){
+          //if(!stack->is_empty())
+          try{
             stack->push(pow(stack->pop(),right));
           }
-          else{
-
-          } 
+          catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
         }
+      }
       }
       else if(getline=="%"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
-          if(!stack->is_empty()){
+         try{
             //cout<<check<<endl;
             
             stack->push(fmod(stack->pop(),check));
             
           } 
+          catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
         }
+      }
       }
       else if(getline=="*"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
-          if(!stack->is_empty()){
+          try{
             //cout<<check<<endl;
             
             stack->push(check*(stack->pop()));
             
           } 
+          catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
         }
       } 
+      }
       else if(getline=="/"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //careful, don't let check be 0; 
           //cout<<check<<endl;
-          if(!stack->is_empty()){
+          try{
             //cout<<check<<endl;
             
             stack->push((stack->pop())/check);
             
           } 
+          catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
         }
+      }
       }
       else if(getline=="+"){
         if(!stack->is_empty()){
@@ -110,7 +125,7 @@ int main() {
           }*/ 
           try{
             stack->push(check+(stack->pop()));
-            cout<<"= "<<stack->pop()<<endl;
+            //result = stack->pop(); 
           }
           catch(const std::underflow_error&) {
     std::cout << "Not enough operands\n";
@@ -129,10 +144,12 @@ int main() {
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
-          if(!stack->is_empty()){
-            //cout<<check<<endl;
-            
+          try{
             stack->push((stack->pop())-check);
+            //result = stack->top(); 
+          }
+          catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
             
           } 
         }
@@ -149,7 +166,7 @@ int main() {
       if(garbage == "") 
       stack->push(stod(getline));
       else{
-        cout<<"Unkown Token"<<endl;
+        cout<<"Unknown Token"<<endl;
       }
       //stack->push(stod(getline));
     }
@@ -162,9 +179,15 @@ int main() {
     cout<<"= "<<stack->pop()<<endl; 
   }else*/
   
+    if(stack->countVector()==1){
+    cout<<"= "<<stack->pop()<<endl; 
+  }else
   //cout<<"= "<<stack->pop()<<endl; 
   if(stack->countVector()>=2){
     cout<<"Too many operands"<<endl; 
+    while(stack->countVector()>0){
+      stack->pop(); 
+    }
   }else
   if(tokens==""){
     cout<<"No expression"<<endl; 
