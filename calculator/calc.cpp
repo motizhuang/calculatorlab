@@ -50,19 +50,19 @@ int main() {
       }
       //int i = getline.length();
       //cout<<i<<endl;
-      if(getline=="^"){
+      else if(getline=="^"){
         if(!stack->is_empty()){//true will go through, else will skip to next 
           double right = stack->pop(); 
-          //cout<<check<<endl;
+
           if(!stack->is_empty()){
-            //cout<<check<<endl;
-            
             stack->push(pow(stack->pop(),right));
-            
+          }
+          else{
+
           } 
         }
       }
-      if(getline=="%"){
+      else if(getline=="%"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
@@ -74,7 +74,7 @@ int main() {
           } 
         }
       }
-      if(getline=="*"){
+      else if(getline=="*"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
@@ -86,7 +86,7 @@ int main() {
           } 
         }
       } 
-      if(getline=="/"){
+      else if(getline=="/"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //careful, don't let check be 0; 
@@ -99,19 +99,33 @@ int main() {
           } 
         }
       }
-      if(getline=="+"){
+      else if(getline=="+"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
-          if(!stack->is_empty()){
+          /*if(!stack->is_empty()){
             //cout<<check<<endl;
             stack->push(check+(stack->pop()));
             
-          } 
+          }*/ 
+          try{
+            stack->push(check+(stack->pop()));
+            cout<<"= "<<stack->pop()<<endl;
+          }
+          catch(const std::underflow_error&) {
+    std::cout << "Not enough operands\n";
+    //stack->push(check);
+    //break; 
+  }
+          /*catch(const std::exception& e) {
+    std::cout << "Caught an exception.  It says: ";
+    std::cout << e.what() << std::endl;
+  }*/
+
         }
       }
 
-      if(getline=="-"){
+      else if(getline=="-"){
         if(!stack->is_empty()){
           double check = stack->pop(); 
           //cout<<check<<endl;
@@ -144,15 +158,15 @@ int main() {
   }
   //stack->push(3.0);
   //stack->push(4.0);
-  if(stack->countVector()==1){
+  /*if(stack->countVector()==1){
     cout<<"= "<<stack->pop()<<endl; 
-  }else
+  }else*/
   
   //cout<<"= "<<stack->pop()<<endl; 
   if(stack->countVector()>=2){
     cout<<"Too many operands"<<endl; 
   }else
-  if(stack->countVector()==0){
+  if(tokens==""){
     cout<<"No expression"<<endl; 
   }
   //cout<<tokens<<endl;
