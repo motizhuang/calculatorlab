@@ -167,6 +167,7 @@ int main() {
       stack->push(stod(getline));
       else{
         cout<<"Unknown Token"<<endl;
+        break; 
       }
       //stack->push(stod(getline));
     }

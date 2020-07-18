@@ -6,7 +6,7 @@ using namespace std;
 //calc suffers if there are errors here 
 
 MyStack::~MyStack(){
-    delete data; 
+    delete [] data; //big mistake that passes
 }
   MyStack::MyStack(){
     data = nullptr; 
@@ -43,11 +43,12 @@ MyStack::~MyStack(){
       }
       if(count==capacity){
           double* newdata = new double[capacity*2];
+          capacity = capacity*2;
           for(int i =0; i<count; i++){
               newdata[i]=data[i]; 
           }
           newdata[count]=item; 
-          delete data; 
+          delete [] data; 
           data = newdata; 
       }
       else{
