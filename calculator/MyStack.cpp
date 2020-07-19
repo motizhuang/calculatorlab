@@ -23,7 +23,7 @@ MyStack::~MyStack(){
       return count; 
   }
   double* MyStack::contents(){
-      if(data!=nullptr)
+      //if(data!=nullptr)
       return data;
   }
   void   MyStack::clear(){
