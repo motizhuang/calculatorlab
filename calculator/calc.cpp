@@ -46,7 +46,6 @@ double process(string tokens){
           double check = stack->pop(); 
           stack->push(fmod(stack->pop(),check)); 
             checkzero(check); 
-            delete stack; 
       }
       else if(getline=="*"){
           double check = stack->pop(); 
