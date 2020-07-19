@@ -102,7 +102,7 @@ return result;
 int main() {
   // TODO: Implement a calculator!
 
-  MyStack* stack = new MyStack();
+  //MyStack* stack = new MyStack();
  
   string tokens; 
   while(getline(cin,tokens)){
@@ -130,7 +130,7 @@ int main() {
 
       }
   }
-  delete stack;
+  //delete stack;
   return 0;//will return 0 whether you write it or not. inherited thing. 
 }
 
