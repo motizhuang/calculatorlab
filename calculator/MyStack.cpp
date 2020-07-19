@@ -23,15 +23,14 @@ MyStack::~MyStack(){
       return count; 
   }
   double* MyStack::contents(){
+      if(data!=nullptr)
       return data;
   }
   void   MyStack::clear(){
       int j = count; 
       for(int i =0; i<j; i++){
           count --; 
-      }
-      //data[i]=0;
-      //count --;  
+      } 
   }
   bool   MyStack::is_empty() const{
       return count ==0;
@@ -61,7 +60,7 @@ MyStack::~MyStack(){
   double MyStack::pop(){
       if(data==nullptr||count==0){
         if(data!=nullptr)
-        delete [] data; 
+        delete [] data;
         throw std::underflow_error("Invalid index.");
       }
       double result = data[count-1];
@@ -72,8 +71,7 @@ MyStack::~MyStack(){
   }
   double MyStack::top() const{
       if(data==nullptr||count==0){
-          if(data!=nullptr)
-        delete [] data;
+          
           throw std::out_of_range("Invalid index."); 
       }
       return data[count-1];
