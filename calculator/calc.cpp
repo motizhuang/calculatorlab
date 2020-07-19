@@ -84,7 +84,12 @@ double process(string tokens){
         throw std::underflow_error("Unknown token.");
       }*/
         push(garbage);
-        stack->push(stod(getline)); 
+        if(garbage=="")
+        stack->push(stod(getline));
+        else{
+          stack->push(stod(getline));
+          delete stack; 
+        } 
       
   }
 }
