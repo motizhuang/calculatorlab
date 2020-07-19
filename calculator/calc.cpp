@@ -26,55 +26,56 @@ void checkempty(int i){
 }
 // TODO: Calculator helper fuctions, if necessary.
 double process(string tokens){
-  MyStack* stack = new MyStack(); 
+  //MyStack* stack = new MyStack(); 
+  MyStack stack; 
   double result=0; 
   string getline=""; 
   stringstream str_strm(tokens);
   while(str_strm>>getline){
     if(getline=="~"||getline=="*"||getline=="/"||getline=="+"||getline=="-"||getline=="^"||getline=="%"){
       if(getline=="~"){
-          stack->push(-1*(stack->pop()));
+          stack.push(-1*(stack.pop()));
       }
       else if(getline=="^"){
  
-          double right = stack->pop(); 
+          double right = stack.pop(); 
         
-            stack->push(pow(stack->pop(),right));
+            stack.push(pow(stack.pop(),right));
           
       }
       else if(getline=="%"){
-          double check = stack->pop(); 
-          stack->push(fmod(stack->pop(),check)); 
+          double check = stack.pop(); 
+          stack.push(fmod(stack.pop(),check)); 
           if(check==0){
-            delete stack; 
+            //delete stack; 
             checkzero(check);
           } 
       }
       else if(getline=="*"){
-          double check = stack->pop(); 
+          double check = stack.pop(); 
           
-            stack->push(check*(stack->pop()));
+            stack.push(check*(stack.pop()));
       }
       else if(getline=="/"){
-          double check = stack->pop(); 
+          double check = stack.pop(); 
           //careful, don't let check be 0; 
           //cout<<check<<endl;
-          stack->push((stack->pop())/check);
+          stack.push((stack.pop())/check);
           if(check==0){
-            delete stack; 
+            //delete stack; 
             checkzero(check);
           } 
       }
       else if(getline=="+"){
 
-          double check = stack->pop();
-            stack->push(check+(stack->pop()));
+          double check = stack.pop();
+            stack.push(check+(stack.pop()));
 
       }
 
       else if(getline=="-"){
-          double check = stack->pop(); 
-          stack->push((stack->pop())-check);
+          double check = stack.pop(); 
+          stack.push((stack.pop())-check);
       }
     }
     else{
@@ -90,18 +91,18 @@ double process(string tokens){
         throw std::underflow_error("Unknown token.");
       }*/
       if(garbage=="")
-        stack->push(stod(getline));
+        stack.push(stod(getline));
         else{
-          delete stack;
-           push(garbage);
+          //delete stack;
+          push(garbage);
         }
       
   }
 }
-int countVector = stack->countVector();
+int countVector = stack.countVector();
 if(countVector>0&&countVector<2)
-result = stack->top(); 
-delete stack; //be careful with throw, if below the checks below this, won't delete because will just throw 
+result = stack.top(); 
+//delete stack; //be careful with throw, if below the checks below this, won't delete because will just throw 
 checkmorethantwo(countVector);
 checkempty(countVector);
 return result; 

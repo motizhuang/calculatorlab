@@ -6,11 +6,11 @@ using namespace std;
 //calc suffers if there are errors here 
 
 MyStack::~MyStack(){
-    if(data!=nullptr)
+    //if(data!=nullptr)
     delete [] data; //big mistake that passes, how to catch this? makes a huge difference. 
 }
   MyStack::MyStack(){
-    data = nullptr; 
+    data = new double[capacity];
     count =0; 
     capacity = 4;
     //int start; using mod sometimes. points to the first element, not necessarily first space
@@ -36,10 +36,10 @@ MyStack::~MyStack(){
 
   }
   void   MyStack::push(double item){
-      if(data == nullptr){
+      /*if(data == nullptr){
           data = new double[capacity];
           data[0]=item; 
-      }
+      }*/
       if(count==capacity){
           double* newdata = new double[capacity*2];
           capacity = capacity*2;//how to catch this 
@@ -57,9 +57,9 @@ MyStack::~MyStack(){
       count++; 
   }
   double MyStack::pop(){
-      if(data==nullptr||count==0){
+      if(count==0){
 
-        delete [] data;
+        //delete [] data;
         throw std::underflow_error("Invalid index.");
       }
       double result = data[count-1];
