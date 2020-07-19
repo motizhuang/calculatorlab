@@ -16,6 +16,14 @@ void push(string name){
               if(check==0)
               throw std::range_error("Unknown token.");
             }
+void checkmorethantwo(int i){
+  if(i>=2)
+    throw runtime_error("Too many operands.");
+}
+void checkempty(int i){
+  if(i==0)
+  throw length_error("No expression.");
+}
 // TODO: Calculator helper fuctions, if necessary.
 double process(string tokens){
   MyStack* stack = new MyStack(); 
@@ -83,6 +91,9 @@ double process(string tokens){
       
   }
 }
+
+checkmorethantwo(stack->countVector());
+checkempty(stack->countVector());
 result = stack->top(); 
 delete stack; 
 return result; 
@@ -110,17 +121,14 @@ int main() {
     std::cout << "Division by zero.\n";
 
       }
+      catch(const std::runtime_error&) {
+    std::cout << "Too many operands.\n";
 
-  
-    if(stack->countVector()>=2){
-    cout<<"Too many operands."<<endl; 
-    while(stack->countVector()>0){
-      stack->pop(); 
-    }
-  }else
-  if(tokens==""){
-    cout<<"No expression."<<endl; 
-  }
+      }
+      catch(const std::length_error&) {
+    std::cout << "No expression.\n";
+
+      }
   }
   delete stack;
   return 0;//will return 0 whether you write it or not. inherited thing. 
