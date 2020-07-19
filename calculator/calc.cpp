@@ -45,7 +45,10 @@ double process(string tokens){
       else if(getline=="%"){
           double check = stack->pop(); 
           stack->push(fmod(stack->pop(),check)); 
-            checkzero(check); 
+          if(check==0){
+            delete stack; 
+            checkzero(check);
+          } 
       }
       else if(getline=="*"){
           double check = stack->pop(); 
@@ -57,7 +60,10 @@ double process(string tokens){
           //careful, don't let check be 0; 
           //cout<<check<<endl;
           stack->push((stack->pop())/check);
-          checkzero(check); 
+          if(check==0){
+            delete stack; 
+            checkzero(check);
+          } 
       }
       else if(getline=="+"){
 
@@ -83,13 +89,12 @@ double process(string tokens){
         if(string!="")
         throw std::underflow_error("Unknown token.");
       }*/
-        push(garbage);
-        if(garbage=="")
+      if(garbage=="")
         stack->push(stod(getline));
         else{
-          stack->push(stod(getline));
-          delete stack; 
-        } 
+          delete stack;
+           push(garbage);
+        }
       
   }
 }
