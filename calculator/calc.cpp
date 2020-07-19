@@ -90,7 +90,7 @@ double process(string tokens){
   }
 }
 int countVector = stack->countVector();
-if(countVector>0&&<2)
+if(countVector>0&&countVector<2)
 result = stack->top(); 
 delete stack; //be careful with throw, if below the checks below this, won't delete because will just throw 
 checkmorethantwo(countVector);
