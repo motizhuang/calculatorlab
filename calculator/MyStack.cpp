@@ -6,6 +6,7 @@ using namespace std;
 //calc suffers if there are errors here 
 
 MyStack::~MyStack(){
+    if(data!=nullptr)
     delete [] data; //big mistake that passes, how to catch this? makes a huge difference. 
 }
   MyStack::MyStack(){
@@ -59,8 +60,8 @@ MyStack::~MyStack(){
   }
   double MyStack::pop(){
       if(data==nullptr||count==0){
-            delete [] data; 
-          throw std::underflow_error("Invalid index.");
+        delete [] data; 
+        throw std::underflow_error("Invalid index.");
       }
       double result = data[count-1];
       //data[count-1]=0;
