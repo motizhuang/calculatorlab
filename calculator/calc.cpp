@@ -12,6 +12,10 @@ void push(string name){
         if(name!="")
         throw std::underflow_error("Unknown token.");
       }
+      void checkzero(double check){
+              if(check==0)
+              throw std::underflow_error("Unknown token.");
+            }
 // TODO: Calculator helper fuctions, if necessary.
 
 int main() {
@@ -78,7 +82,12 @@ int main() {
           //cout<<check<<endl;
          try{
             //cout<<check<<endl;
-            
+            try{
+              checkzero(check); 
+            }
+            catch(const std::underflow_error&){
+              cout<<"Division by zero."<<endl; 
+            }
             stack->push(fmod(stack->pop(),check));
             
           } 
@@ -110,6 +119,12 @@ int main() {
           try{
             //cout<<check<<endl;
             
+            try{
+              checkzero(check); 
+            }
+            catch(const std::underflow_error&){
+              cout<<"Division by zero."<<endl; 
+            }
             stack->push((stack->pop())/check);
             
           } 
