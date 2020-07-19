@@ -10,17 +10,19 @@ using namespace std;
 
 int main() {
   MyStack* stack = new MyStack();
-  double num = 3.0; 
+  /*double num = 3.0; 
   
   double* number = new double[3]; 
   number[0]=num; 
   double* t = number; 
   //delete t; 
-  cout<<"the number is: "<<number[0]<<endl;
+  cout<<"the number is: "<<number[0]<<endl;*/
 
   // TODO: Replace this with something useful!
   //std::cout << "This program doesn't do anything yet...\n";
-  stack->push(1); 
+  stack->push(1);
+  stack->pop();
+  stack->pop();
   cout<<stack->countVector()<<endl;
   stack->push(2);
   stack->push(3);

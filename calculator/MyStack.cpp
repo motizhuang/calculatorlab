@@ -72,6 +72,8 @@ MyStack::~MyStack(){
   }
   double MyStack::top() const{
       if(data==nullptr||count==0){
+          if(data!=nullptr)
+        delete [] data;
           throw std::out_of_range("Invalid index."); 
       }
       return data[count-1];
