@@ -49,8 +49,7 @@ MyStack::~MyStack(){
           }
           newdata[count]=item; 
           delete [] data; 
-          data = newdata; 
-          //delete [] newdata; //need to remember to delete ALL new. this screws stuff up. 
+          data = newdata;  
       }
       else{
           data[count]=item; 
