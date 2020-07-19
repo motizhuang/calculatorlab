@@ -8,7 +8,10 @@ using namespace std;
 #include <ctgmath> 
 #include <stdexcept>
 
-
+void push(string name){
+        if(name!="")
+        throw std::underflow_error("Unknown token.");
+      }
 // TODO: Calculator helper fuctions, if necessary.
 
 int main() {
@@ -164,12 +167,23 @@ int main() {
       ts.clear();
       std::string garbage;
       std::getline(ts, garbage);
-      if(garbage == "") 
+      /*void push(string){
+        if(string!="")
+        throw std::underflow_error("Unknown token.");
+      }*/
+      try{
+        push(garbage);
+        stack->push(stod(getline));
+      }
+      catch(const std::underflow_error&){
+        cout<<"Unknown token."<<endl; 
+      }
+      /*if(garbage == "") 
       stack->push(stod(getline));
       else{
-        cout<<"Unknown Token."<<endl;
+        cout<<"Unknown token."<<endl;
         //break; 
-      }
+      }*/
       //stack->push(stod(getline));
     }
     //stod(getline);
