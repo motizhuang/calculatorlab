@@ -58,9 +58,9 @@ MyStack::~MyStack(){
   }
   double MyStack::pop(){
       if(count==0){
-
         //delete [] data;
         throw std::underflow_error("Invalid index.");
+        delete [] data;
       }
       double result = data[count-1];
       //data[count-1]=0;
@@ -69,7 +69,7 @@ MyStack::~MyStack(){
 
   }
   double MyStack::top() const{
-      if(data==nullptr||count==0){
+      if(count==0){
           
           throw std::out_of_range("Invalid index."); 
       }
