@@ -6,7 +6,7 @@ using namespace std;
 //calc suffers if there are errors here 
 
 MyStack::~MyStack(){
-    delete [] data; //big mistake that passes
+    delete [] data; //big mistake that passes, how to catch this? makes a huge difference. 
 }
   MyStack::MyStack(){
     data = nullptr; 
@@ -43,7 +43,7 @@ MyStack::~MyStack(){
       }
       if(count==capacity){
           double* newdata = new double[capacity*2];
-          capacity = capacity*2;
+          capacity = capacity*2;//how to catch this 
           for(int i =0; i<count; i++){
               newdata[i]=data[i]; 
           }
