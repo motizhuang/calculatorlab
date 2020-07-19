@@ -89,11 +89,11 @@ double process(string tokens){
       
   }
 }
-
-checkmorethantwo(stack->countVector());
-checkempty(stack->countVector());
+int countVector = stack->countVector();
 result = stack->top(); 
 delete stack; 
+checkmorethantwo(countVector);
+checkempty(countVector);
 return result; 
 }
 
