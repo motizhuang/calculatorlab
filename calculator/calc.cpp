@@ -46,6 +46,7 @@ double process(string tokens){
           double check = stack->pop(); 
           stack->push(fmod(stack->pop(),check)); 
             checkzero(check); 
+            delete stack; 
       }
       else if(getline=="*"){
           double check = stack->pop(); 
@@ -69,7 +70,6 @@ double process(string tokens){
       else if(getline=="-"){
           double check = stack->pop(); 
           stack->push((stack->pop())-check);
-
       }
     }
     else{
@@ -85,7 +85,10 @@ double process(string tokens){
         throw std::underflow_error("Unknown token.");
       }*/
         push(garbage);
+        if(garbage=="")
         stack->push(stod(getline));
+        else
+        delete stack; 
       
   }
 }
@@ -114,11 +117,9 @@ int main() {
       }
       catch(const std::underflow_error&) {
     std::cout << "Not enough operands.\n";
-
       }
       catch(const std::range_error&) {
     std::cout << "Division by zero.\n";
-
       }
       catch(const std::runtime_error&) {
     std::cout << "Too many operands.\n";

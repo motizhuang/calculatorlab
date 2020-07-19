@@ -60,6 +60,7 @@ MyStack::~MyStack(){
   double MyStack::pop(){
       if(data==nullptr||count==0){
           throw std::underflow_error("Invalid index.");
+          delete [] data; 
       }
       double result = data[count-1];
       //data[count-1]=0;
