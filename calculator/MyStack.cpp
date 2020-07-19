@@ -23,7 +23,6 @@ MyStack::~MyStack(){
       return count; 
   }
   double* MyStack::contents(){
-      //if(data!=nullptr)
       return data;
   }
   void   MyStack::clear(){
@@ -59,7 +58,7 @@ MyStack::~MyStack(){
   }
   double MyStack::pop(){
       if(data==nullptr||count==0){
-        if(data!=nullptr)
+
         delete [] data;
         throw std::underflow_error("Invalid index.");
       }
