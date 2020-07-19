@@ -27,8 +27,8 @@ void checkempty(int i){
 // TODO: Calculator helper fuctions, if necessary.
 double process(string tokens){
   MyStack* stack = new MyStack(); 
-  double result; 
-    string getline; 
+  double result=0; 
+  string getline=""; 
   stringstream str_strm(tokens);
   while(str_strm>>getline){
     if(getline=="~"||getline=="*"||getline=="/"||getline=="+"||getline=="-"||getline=="^"||getline=="%"){
@@ -68,9 +68,7 @@ double process(string tokens){
 
       else if(getline=="-"){
           double check = stack->pop(); 
-          //cout<<check<<endl;
-          
-            stack->push((stack->pop())-check);
+          stack->push((stack->pop())-check);
 
       }
     }

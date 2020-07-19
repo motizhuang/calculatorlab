@@ -15,7 +15,7 @@ int main() {
   double* number = new double[3]; 
   number[0]=num; 
   double* t = number; 
-  delete t; 
+  //delete t; 
   cout<<"the number is: "<<number[0]<<endl;
 
   // TODO: Replace this with something useful!
