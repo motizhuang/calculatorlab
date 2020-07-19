@@ -49,8 +49,8 @@ MyStack::~MyStack(){
           }
           newdata[count]=item; 
           delete [] data; 
-          delete [] newdata; 
           data = newdata; 
+          delete [] newdata; 
       }
       else{
           data[count]=item; 
