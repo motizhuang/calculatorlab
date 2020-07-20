@@ -102,6 +102,7 @@ double process(string tokens){
 int countVector = stack.countVector();
 if(countVector>0&&countVector<2)
 result = stack.top(); 
+cout<<stack.contents()[0]<<endl;
 //delete stack; //be careful with throw, if below the checks below this, won't delete because will just throw 
 checkmorethantwo(countVector);
 checkempty(countVector);
